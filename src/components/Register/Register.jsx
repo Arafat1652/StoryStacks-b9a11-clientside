@@ -35,8 +35,8 @@ const Register = () => {
             return toast.error('password must be 6 character or longer')
            
         }
-        else if(!/^(?=.*[a-z])(?=.*[A-Z]).+$/.test(password)){
-            return toast.error('password must have at least one uppercase and one lower case character')
+        else if(!/^(?=.*[A-Z])(?=.*[\W_]).+$/.test(password)){
+            return toast.error('The password must contain at least one capital letter and one special character.')
            
         }
       
