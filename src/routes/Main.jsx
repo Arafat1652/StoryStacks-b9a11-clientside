@@ -6,6 +6,7 @@ import Root from "../components/Root/Root";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
+import AddBook from "../Pages/AddBook";
 
   const router = createBrowserRouter([
     
@@ -17,6 +18,10 @@ import ErrorPage from "../components/ErrorPage/ErrorPage";
         {
             index: true,
             element: <Home></Home>
+        },
+        {
+          path: '/add',
+          element: <AddBook></AddBook>
         }
       ]
     },
