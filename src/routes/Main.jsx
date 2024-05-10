@@ -7,6 +7,7 @@ import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import AddBook from "../Pages/AddBook";
+import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 
   const router = createBrowserRouter([
     
@@ -21,7 +22,7 @@ import AddBook from "../Pages/AddBook";
         },
         {
           path: '/add',
-          element: <AddBook></AddBook>
+          element: <PrivateRoute><AddBook></AddBook></PrivateRoute>
         }
       ]
     },
