@@ -35,7 +35,7 @@ import ViewDetails from "../components/ViewDetails/ViewDetails";
     },
     {
       path: '/details/:id',
-      element: <ViewDetails></ViewDetails>,
+      element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
       loader: ({params})=>fetch(`${import.meta.env.VITE_API_URL}/books/${params.id}`)
     },
     {

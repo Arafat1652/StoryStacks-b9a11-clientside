@@ -12,9 +12,9 @@ const BookCategory = ({cate}) => {
             console.log(data);
           });
       }, [category]);
-
+  // bg-[#fff3f3] bg-[#d7edd8]
     return (
-        <Link to={`/bookItem/${category}`} className="bg-[#d7edd8] w-96 rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-500">
+        <Link to={`/bookItem/${category}`} className="bg-base-200 w-96 rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-500">
                     <div className="p-4">
                       <img
                         className="rounded-xl scale-x hover:scale-x-[-1] lg:h-[250px] md:h-[350px] w-full object-cover object-center"
