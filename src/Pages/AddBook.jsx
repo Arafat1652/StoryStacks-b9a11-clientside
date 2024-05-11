@@ -1,20 +1,59 @@
+import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 
 const AddBook = () => {
-    const {user} = useAuth()
-    console.log('user ami', user);
+  const { user } = useAuth();
+
   const handleAddBook = (e) => {
     e.preventDefault();
     const form = e.target;
-    const bookName = form.bookName.value;
+    const book_name = form.bookName.value;
     const category = form.category.value;
-    const description = form.description.value
-    const quantity = form.quantity.value
-    const rating = form.rating.value
-    const author = form.author.value
-    const image = form.image.value
-    const content = form.content.value
-    console.log(category, bookName, description, quantity, rating, author, image, content, user.email);
+    const description = form.description.value;
+    const quantity = form.quantity.value;
+    const rating = form.rating.value;
+    const author_name = form.author.value;
+    const image = form.image.value;
+    const content = form.content.value;
+    const user_email = user.email;
+
+    const book = {
+      category,
+      book_name,
+      description,
+      quantity,
+      rating,
+      author_name,
+      image,
+      content,
+      user_email,
+    };
+
+    console.log(book);
+
+    fetch(`${import.meta.env.VITE_API_URL}/books`, {
+      method:'POST',
+      headers:{
+        'content-type': 'application/json'
+      },
+      body:JSON.stringify(book)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if (data.insertedId) {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Your data added succefully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        form.reset();
+      }
+    })
+
+
   };
 
   return (
@@ -37,26 +76,28 @@ const AddBook = () => {
                 />
               </label>
             </div>
-             {/* form book category*/}
+            {/* form book category*/}
             <div className="form-control w-1/2 ml-4 ">
               <label className="label">
                 <span className="label-text">Category</span>
               </label>
               <div className="input-group">
-                <select name="category" className="select select-bordered w-full">
+                <select
+                  name="category"
+                  className="select select-bordered w-full"
+                >
                   <option></option>
                   <option>Novel</option>
                   <option>Thriller</option>
                   <option>History</option>
                   <option>Drama</option>
                   <option>Sci-Fi</option>
-                  <option>Biography</option>
                 </select>
               </div>
             </div>
             {/*  */}
           </div>
-           {/* form book Description */}
+          {/* form book Description */}
           <div className="flex mb-5">
             <div className="form-control w-1/2">
               <label className="label">
@@ -103,7 +144,7 @@ const AddBook = () => {
                 />
               </label>
             </div>
-    {/* form author */}
+            {/* form author */}
             <div className="form-control w-1/2 ml-4">
               <label className="label">
                 <span className="label-text">Author Name</span>
@@ -128,7 +169,7 @@ const AddBook = () => {
               <label className="input-group">
                 <input
                   type="text"
-                    defaultValue={user.email}
+                  defaultValue={user.email}
                   className="input input-bordered w-full"
                   readOnly
                 />
@@ -153,11 +194,15 @@ const AddBook = () => {
 
           <div className="flex mb-5 w-full">
             <div className="form-control w-full">
-            <label >Book Content</label>
-            <br/>
-    <textarea id="content" className="border" name="content" rows="4" cols="49">
-        
-    </textarea>
+              <label>Book Content</label>
+              <br />
+              <textarea
+                id="content"
+                className="border"
+                name="content"
+                rows="4"
+                cols="49"
+              ></textarea>
             </div>
           </div>
 

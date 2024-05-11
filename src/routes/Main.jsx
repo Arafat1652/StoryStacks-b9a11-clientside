@@ -8,6 +8,7 @@ import Register from "../components/Register/Register";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import AddBook from "../Pages/AddBook";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
+import BookItems from "../components/BookItems/BookItems";
 
   const router = createBrowserRouter([
     
@@ -25,6 +26,11 @@ import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
           element: <PrivateRoute><AddBook></AddBook></PrivateRoute>
         }
       ]
+    },
+    {
+      path: '/bookItem/:category',
+      element:<BookItems></BookItems>,
+      loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/categories/${params.category}`)
     },
     {
         path: '/login',
