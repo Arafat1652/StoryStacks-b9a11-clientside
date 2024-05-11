@@ -3,7 +3,6 @@ import Nav from "../Nav/Nav";
 import { AiTwotoneTag } from "react-icons/ai";
 import { FaRegStar } from "react-icons/fa";
 import Footer from "../Footer.jsx/Footer";
-import { MdAccessTime } from "react-icons/md";
 
 
 const BookItems = () => {
@@ -28,16 +27,19 @@ const BookItems = () => {
               
               <div className="card-body">
                 <h2 className="card-title">{item.book_name}</h2>
-               
-                <hr />
-                <p>{item.author_name}</p>
-                <p>{item.category}</p>
-                <hr />
-                <div className="flex justify-between mt-2 mb-4">
+                
+                <div className="flex justify-around">
+                <p className="flex items-center font-bold"><AiTwotoneTag></AiTwotoneTag> <span className="ml-2 text-orange-400">{item.category}</span></p>
                         <h3 className="flex items-center font-bold text-lg gap-1"><FaRegStar ></FaRegStar>{item.rating}</h3>
                     </div>
+               
+                <hr />
+                <p><span className="font-bold">Author : </span>{item.author_name}</p>
+                
+                <hr />
+                
                     
-                <Link to={`/crafts/${item._id}`} className="card-actions w-full">
+                <Link to={`/details/${item._id}`} className="card-actions w-full">
                   <button className="btn bg-[#13e5c0] w-full text-white font-bold">View Details</button>
                 </Link>
         

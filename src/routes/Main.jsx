@@ -9,6 +9,7 @@ import ErrorPage from "../components/ErrorPage/ErrorPage";
 import AddBook from "../Pages/AddBook";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import BookItems from "../components/BookItems/BookItems";
+import ViewDetails from "../components/ViewDetails/ViewDetails";
 
   const router = createBrowserRouter([
     
@@ -31,6 +32,11 @@ import BookItems from "../components/BookItems/BookItems";
       path: '/bookItem/:category',
       element:<BookItems></BookItems>,
       loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/categories/${params.category}`)
+    },
+    {
+      path: '/details/:id',
+      element: <ViewDetails></ViewDetails>,
+      loader: ({params})=>fetch(`${import.meta.env.VITE_API_URL}/books/${params.id}`)
     },
     {
         path: '/login',
