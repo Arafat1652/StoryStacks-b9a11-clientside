@@ -3,6 +3,9 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer.jsx/Footer';
 import { useLoaderData } from 'react-router-dom';
 import { AiTwotoneTag } from 'react-icons/ai';
+import { FaRegStar } from 'react-icons/fa';
+import { MdAccessTime } from 'react-icons/md';
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 const ViewDetails = () => {
     const book = useLoaderData()
@@ -16,7 +19,6 @@ const ViewDetails = () => {
         author_name,
         image,
         content,
-        user_email,
       } = book
 
     return (
@@ -61,45 +63,30 @@ const ViewDetails = () => {
                   <h2  className="text-4xl lg:mt-6 font-bold mb-2">
                    {book_name}
                   </h2>
+                 <div className='my-3'>
+                 <span className="font-bold mr-1">
+                        Author : <span className='font-normal'>{author_name}</span>
+                      </span>
+                 </div>
                   <h3  className="flex items-center text-lg font-bold gap-2 text-[#13e5c0]"><AiTwotoneTag className="fill-[#13e5c0]"></AiTwotoneTag>{category}</h3>
                   <hr className="my-4"/>
                   <p  className=" mb-4">
-                    {description}
+                   <span className='font-bold'>Description : </span> {description}
                   </p>
                   <hr className="my-4"/>
-                  {/* <div  className="flex mb-4">
-                    <div  className="mr-4">
-                      <span className="font-bold mr-1 ">
-                        Price:
-                      </span>
-                      <span className="text-[#fb8053] font-bold">
-                      {price}
-                      </span>
-                    </div>
-                    <div >
-                      <span className="font-bold mr-1 ">
-                        Customization:
-                      </span>
-                      <span className="text-[#fb8053] font-bold ">
-                        {customization}
-                      </span>
-                    </div>
-                  </div>
                   <div className="flex gap-4 mt-4">
                   <h3  className="flex items-center text-lg gap-1"><FaRegStar className="text-purple-400"></FaRegStar>{rating}</h3>
-                  <h4  className=" flex items-center text-lg gap-1"><MdAccessTime className="text-purple-400"></MdAccessTime>{processingTime}</h4>
+                  <h4  className=" flex items-center text-lg gap-1"><MdOutlineShoppingCart className="text-purple-400"></MdOutlineShoppingCart>{quantity}</h4>
               </div>
               <hr className="my-4"/>
                    <div >
                       <span className="font-bold mr-1 ">
-                        Stock Status :
+                        Content : <span className='font-normal'>{content}</span>
                       </span>
-                      <span className="text-[#fb8053] font-bold ">
-                        {stockStatus}
-                      </span>
+                      <div>
+                      <button className='btn btn-primary mt-4 px-10'>Borrow</button>
+                      </div>
                     </div>
-                    <h3 className=" mt-4">User Name : <span className="font-bold">{userName}</span></h3>
-                    <h3 className=" mt-4">User Email: <span className="font-bold">{userEmail}</span></h3> */}
                 </div>
               </div>
             </div>

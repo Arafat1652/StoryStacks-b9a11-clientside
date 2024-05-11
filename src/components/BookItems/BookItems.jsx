@@ -33,11 +33,7 @@ const BookItems = () => {
                         <h3 className="flex items-center font-bold text-lg gap-1"><FaRegStar ></FaRegStar>{item.rating}</h3>
                     </div>
                
-                <hr />
-                <p><span className="font-bold">Author : </span>{item.author_name}</p>
-                
-                <hr />
-                
+                <p className="mb-2"><span className="font-bold">Author : </span>{item.author_name}</p>
                     
                 <Link to={`/details/${item._id}`} className="card-actions w-full">
                   <button className="btn bg-[#13e5c0] w-full text-white font-bold">View Details</button>
