@@ -1,66 +1,74 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Footer from "../Footer.jsx/Footer";
+import Nav from "../Nav/Nav";
 import Swal from "sweetalert2";
-import useAuth from "../hooks/useAuth";
 
-const AddBook = () => {
-  const { user } = useAuth();
+const UpdateBook = () => {
+  const { id } = useParams();
+  //   console.log(id);
+  const [books, setBooks] = useState({});
 
-  const handleAddBook = (e) => {
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/singleBook/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setBooks(data);
+        // console.log("single books", data);
+      });
+  }, [id]);
+  //   console.log("booksboooks", books);
+
+  const handleUpdateBook = (e) => {
     e.preventDefault();
     const form = e.target;
     const book_name = form.bookName.value;
     const category = form.category.value;
-    const description = form.description.value;
-    const quantity = form.quantity.value;
     const rating = form.rating.value;
     const author_name = form.author.value;
     const image = form.image.value;
-    const content = form.content.value;
-    const user_email = user.email;
 
     const book = {
+        book_name,
       category,
-      book_name,
-      description,
-      quantity,
       rating,
       author_name,
       image,
-      content,
-      user_email,
     };
 
     console.log(book);
 
-    fetch(`${import.meta.env.VITE_API_URL}/books`, {
-      method:'POST',
-      headers:{
-        'content-type': 'application/json'
-      },
-      body:JSON.stringify(book)
-    })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      if (data.insertedId) {
-        Swal.fire({
-          position: "top-center",
-          icon: "success",
-          title: "Your data added succefully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        form.reset();
-      }
-    })
+    fetch(`${import.meta.env.VITE_API_URL}/updateBook/${id}`,{
+            method: 'PUT',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(book)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            if(data.modifiedCount>0){
+                Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: "updated succefully",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+        })
+
 
 
   };
 
   return (
     <div>
+        <Nav></Nav>
       <div className="p-24 ">
-        <h3 className="text-3xl font-bold text-center mb-8">Add Book</h3>
-        <form onSubmit={handleAddBook}>
+        <h3 className="text-3xl font-bold text-center mb-8">Update Book</h3>
+        <form onSubmit={handleUpdateBook}>
           {/* form book name */}
           <div className="flex mb-5">
             <div className="form-control w-1/2">
@@ -71,6 +79,7 @@ const AddBook = () => {
                 <input
                   type="text"
                   name="bookName"
+                  defaultValue={books.book_name}
                   placeholder="Book Name"
                   className="input input-bordered w-full"
                 />
@@ -86,7 +95,6 @@ const AddBook = () => {
                   name="category"
                   className="select select-bordered w-full"
                 >
-                  
                   <option>Novel</option>
                   <option>Thriller</option>
                   <option>History</option>
@@ -96,36 +104,6 @@ const AddBook = () => {
               </div>
             </div>
             {/*  */}
-          </div>
-          {/* form book Description */}
-          <div className="flex mb-5">
-            <div className="form-control w-1/2">
-              <label className="label">
-                <span className="label-text">Description</span>
-              </label>
-              <label className="input-group">
-                <input
-                  type="text"
-                  name="description"
-                  placeholder="Short Description"
-                  className="input input-bordered w-full"
-                />
-              </label>
-            </div>
-            {/* form book quantity */}
-            <div className="form-control w-1/2 ml-4">
-              <label className="label">
-                <span className="label-text">Quantity</span>
-              </label>
-              <label className="input-group">
-                <input
-                  type="number"
-                  name="quantity"
-                  placeholder="Quantity"
-                  className="input input-bordered w-full "
-                />
-              </label>
-            </div>
           </div>
           {/* form rating */}
           <div className="flex mb-5">
@@ -139,6 +117,7 @@ const AddBook = () => {
                   max={5}
                   min={1}
                   name="rating"
+                  defaultValue={books.rating}
                   placeholder="Rating"
                   className="input input-bordered w-full"
                 />
@@ -153,6 +132,7 @@ const AddBook = () => {
                 <input
                   type="text"
                   name="author"
+                  defaultValue={books.author_name}
                   placeholder="Author Name"
                   className="input input-bordered w-full"
                 />
@@ -162,21 +142,7 @@ const AddBook = () => {
 
           {/* form row */}
           <div className="flex mb-5">
-            <div className="form-control w-1/2">
-              <label className="label">
-                <span className="label-text">User Email</span>
-              </label>
-              <label className="input-group">
-                <input
-                  type="text"
-                  defaultValue={user.email}
-                  className="input input-bordered w-full"
-                  readOnly
-                />
-              </label>
-            </div>
-
-            <div className="form-control w-1/2 ml-4">
+            <div className="form-control w-1/2 ">
               <label className="label">
                 <span className="label-text">Image</span>
               </label>
@@ -184,6 +150,7 @@ const AddBook = () => {
                 <input
                   type="text"
                   name="image"
+                  defaultValue={books.image}
                   placeholder="Book Image URL"
                   className="input input-bordered w-full"
                 />
@@ -192,29 +159,16 @@ const AddBook = () => {
           </div>
           {/* form */}
 
-          <div className="flex mb-5 w-full">
-            <div className="form-control w-full">
-              <label>Book Content</label>
-              <br />
-              <textarea
-                id="content"
-                className="border"
-                name="content"
-                rows="4"
-                cols="49"
-              ></textarea>
-            </div>
-          </div>
-
           <input
             type="submit"
-            value="Add"
+            value="Submit"
             className="btn btn-block text-xl bg-[#13e5c0]"
           />
         </form>
       </div>
+      <Footer></Footer>
     </div>
   );
 };
 
-export default AddBook;
+export default UpdateBook;

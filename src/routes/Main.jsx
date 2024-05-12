@@ -11,6 +11,8 @@ import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import BookItems from "../components/BookItems/BookItems";
 import ViewDetails from "../components/ViewDetails/ViewDetails";
 import BorrowedBooks from "../Pages/BorrowedBooks";
+import AllBooks from "../Pages/AllBooks";
+import UpdateBook from "../components/Update/UpdateBook";
 
   const router = createBrowserRouter([
     
@@ -31,6 +33,10 @@ import BorrowedBooks from "../Pages/BorrowedBooks";
           path: '/borrowed',
           element: <PrivateRoute><BorrowedBooks></BorrowedBooks></PrivateRoute>
         },
+        {
+          path:'/all',
+          element:<PrivateRoute><AllBooks></AllBooks></PrivateRoute>
+        }
       ]
     },
     {
@@ -42,6 +48,10 @@ import BorrowedBooks from "../Pages/BorrowedBooks";
       path: '/details/:id',
       element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
       loader: ({params})=>fetch(`${import.meta.env.VITE_API_URL}/books/${params.id}`)
+    },
+    {
+      path: '/update/:id',
+      element:<PrivateRoute><UpdateBook></UpdateBook></PrivateRoute>
     },
     {
         path: '/login',
