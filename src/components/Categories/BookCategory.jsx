@@ -9,7 +9,7 @@ const BookCategory = ({cate}) => {
         fetch(`${import.meta.env.VITE_API_URL}/categories/${category}`)
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
           });
       }, [category]);
   // bg-[#fff3f3] bg-[#d7edd8]

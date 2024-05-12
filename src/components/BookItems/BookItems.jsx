@@ -8,7 +8,7 @@ import Footer from "../Footer.jsx/Footer";
 const BookItems = () => {
     const bookItems =useLoaderData() 
     
-    console.log('bookitemitemitem',bookItems);
+    // console.log('bookitemitemitem',bookItems);
     return (
         <div className="px-2 md:px-2 lg:px-0">
         

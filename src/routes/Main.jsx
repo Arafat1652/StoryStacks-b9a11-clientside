@@ -10,6 +10,7 @@ import AddBook from "../Pages/AddBook";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import BookItems from "../components/BookItems/BookItems";
 import ViewDetails from "../components/ViewDetails/ViewDetails";
+import BorrowedBooks from "../Pages/BorrowedBooks";
 
   const router = createBrowserRouter([
     
@@ -25,7 +26,11 @@ import ViewDetails from "../components/ViewDetails/ViewDetails";
         {
           path: '/add',
           element: <PrivateRoute><AddBook></AddBook></PrivateRoute>
-        }
+        },
+        {
+          path: '/borrowed',
+          element: <PrivateRoute><BorrowedBooks></BorrowedBooks></PrivateRoute>
+        },
       ]
     },
     {
