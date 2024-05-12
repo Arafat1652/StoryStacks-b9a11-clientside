@@ -148,7 +148,8 @@ console.table(book);
                       onClick={() =>
                         document.getElementById("my_modal_3").showModal()
                       }
-                      className="btn btn-primary mt-4 px-10"
+                      disabled={quantity === 0}
+                      className="disabled:cursor-not-allowed  btn btn-primary mt-4 px-10"
                     >
                       Borrow
                     </button>

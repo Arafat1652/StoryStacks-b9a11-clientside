@@ -86,7 +86,7 @@ const AddBook = () => {
                   name="category"
                   className="select select-bordered w-full"
                 >
-                  <option></option>
+                  
                   <option>Novel</option>
                   <option>Thriller</option>
                   <option>History</option>
