@@ -134,8 +134,7 @@ console.table(book);
                     {rating}
                   </h3>
                   <h4 className=" flex items-center text-lg gap-1">
-                    <MdOutlineShoppingCart className="text-purple-400"></MdOutlineShoppingCart>
-                    {quantity}
+                  <span className="font-bold mr-1 "> Quantity : </span> {quantity}
                   </h4>
                 </div>
                 <hr className="my-4" />

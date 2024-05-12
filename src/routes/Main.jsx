@@ -35,7 +35,7 @@ import BorrowedBooks from "../Pages/BorrowedBooks";
     },
     {
       path: '/bookItem/:category',
-      element:<BookItems></BookItems>,
+      element:<PrivateRoute><BookItems></BookItems></PrivateRoute>,
       loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/categories/${params.category}`)
     },
     {
