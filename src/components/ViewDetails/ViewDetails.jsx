@@ -42,8 +42,8 @@ console.table(book);
   const returnDate = startDate;
 
   const handleBorrowSubmit = e =>{
-    
 
+    e.preventDefault()
     const borrowBookData = {
         bookId:_id,
         image,
@@ -69,6 +69,7 @@ console.table(book);
         toast.success('Your borrowed this book succefully')
 
         }
+        window.location.reload()
       })
   }
 
