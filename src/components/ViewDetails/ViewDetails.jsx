@@ -71,6 +71,10 @@ console.table(book);
         }
         window.location.reload()
       })
+      .catch(error => {
+        toast.error('You are already borrwed this books:', error);
+        
+    });
   }
 
 //   console.log('date',startDate);

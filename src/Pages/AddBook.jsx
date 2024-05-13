@@ -120,6 +120,7 @@ const AddBook = () => {
               <label className="input-group">
                 <input
                   type="number"
+                  min={1}
                   name="quantity"
                   placeholder="Quantity"
                   className="input input-bordered w-full "
