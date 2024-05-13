@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../Footer.jsx/Footer";
 import Nav from "../Nav/Nav";
 import Swal from "sweetalert2";
@@ -8,6 +8,7 @@ const UpdateBook = () => {
   const { id } = useParams();
   //   console.log(id);
   const [books, setBooks] = useState({});
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/singleBook/${id}`)
@@ -56,6 +57,7 @@ const UpdateBook = () => {
                     showConfirmButton: false,
                     timer: 1500
                   });
+                 navigate('/all') 
             }
         })
 
