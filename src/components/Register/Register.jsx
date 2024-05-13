@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Nav from "../Nav/Nav";
 import Footer from "../Footer.jsx/Footer";
+import axios from "axios";
 
 // import { Helmet } from "react-helmet-async";
 
@@ -44,10 +45,19 @@ const Register = () => {
         createUser(email, password)
         .then(()=>{
            
-            toast.success('Your Registration Succesfull')
+            
             updateUserProfile(fullName, image)
             .then(()=>{
-                navigate('/')
+                const user = {email}
+                console.log('user',user);
+                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user,{withCredentials: true})
+                .then(res=> {
+                  console.log(res.data);
+                  if(res.data.success){
+                    toast.success('Your Registration Succesfull')
+                    navigate('/')
+                  }
+                }) 
             })
         })
         .catch(error=>{

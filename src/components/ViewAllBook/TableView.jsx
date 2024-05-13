@@ -40,6 +40,12 @@ const TableView = ({books}) => {
                         scope="col"
                         className="text-sm font-medium  px-6 py-4 text-left"
                       >
+                      Quantity
+                      </th>
+                      <th
+                        scope="col"
+                        className="text-sm font-medium  px-6 py-4 text-left"
+                      >
                        Rating
                       </th>
                       <th
@@ -65,6 +71,9 @@ const TableView = ({books}) => {
                         </td>
                         <td className="text-sm  font-light px-6 py-4 whitespace-nowrap">
                         {item.category}
+                        </td>
+                        <td className="text-sm  font-light px-6 py-4 whitespace-nowrap">
+                        {item.quantity}
                         </td>
                         <td className="text-sm  font-light px-6 py-4 whitespace-nowrap">
                         {item.rating}

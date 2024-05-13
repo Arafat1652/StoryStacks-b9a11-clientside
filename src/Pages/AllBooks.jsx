@@ -13,7 +13,7 @@ const AllBooks = () => {
     const [view, setView] = useState('card')
 // console.log(crafts);
 useEffect(()=>{
-    fetch(`${import.meta.env.VITE_API_URL}/books?filter=${filter}`)
+    fetch(`${import.meta.env.VITE_API_URL}/books?filter=${filter}`, {credentials: 'include'})
     .then(res=>res.json())
     .then(data=>setBooks(data))
 },[filter])
@@ -28,9 +28,9 @@ const handleToggleView = (selectedView) => {
   // for show available book
   const handleAvailableBook =()=>{
     setFilter(true)
-    console.log('filter in handle', filter);
+    // console.log('filter in handle', filter);
   }
-  console.log('filter out of handle', filter);
+  // console.log('filter out of handle', filter);
 
 
     return (

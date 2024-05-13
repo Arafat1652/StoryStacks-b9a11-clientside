@@ -1,8 +1,9 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Nav from "../Nav/Nav";
 import { AiTwotoneTag } from "react-icons/ai";
-import { FaRegStar } from "react-icons/fa";
+import {  FaRegStar } from "react-icons/fa";
 import Footer from "../Footer.jsx/Footer";
+import { useState } from "react";
 // import React from 'react';
 // import Rating from 'react-rating';
 
@@ -11,6 +12,8 @@ const BookItems = () => {
     const bookItems =useLoaderData() 
     
     // console.log('bookitemitemitem',bookItems);
+    const [cValue, setCValue] = useState(0);
+    const [hValue, setHValue] = useState(undefined);
     return (
         <div className="px-2 md:px-2 lg:px-0">
         
@@ -32,7 +35,15 @@ const BookItems = () => {
                 
                 <div className="flex justify-around">
                 <p className="flex items-center font-bold"><AiTwotoneTag></AiTwotoneTag> <span className="ml-2 text-orange-400">{item.category}</span></p>
-                        <h3 className="flex items-center font-bold text-lg gap-1"><FaRegStar ></FaRegStar>{item.rating}
+                        <h3 className="flex items-center font-bold text-lg gap-1">
+                        {[...Array(item.rating).keys()].map((r, index)=><FaRegStar key={index}
+                        color={(hValue || cValue) > index ? "orange" : "black"}
+                        onClick={() => setCValue(index + 1)}
+                        onMouseOver={() => setHValue(index + 1)}
+                        onMouseLeave={() => setHValue(undefined)}
+                        style={{ cursor: "pointer" }}
+                        ></FaRegStar>)
+                        }
                         </h3>
                         
                         {/* rating */}
@@ -40,7 +51,8 @@ const BookItems = () => {
                         {/* rating */}
                     </div>
                
-                <p className="mb-2"><span className="font-bold">Author : </span>{item.author_name}</p>
+                <p className=""><span className="font-bold">Author : </span>{item.author_name}</p>
+                <p className=""><span className="font-bold">Quantity : </span>{item.quantity}</p>
                     
                 <Link to={`/details/${item._id}`} className="card-actions w-full">
                   <button className="btn bg-[#13e5c0] w-full text-white font-bold">View Details</button>

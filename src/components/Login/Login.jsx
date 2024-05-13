@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Nav from "../Nav/Nav";
 import Footer from "../Footer.jsx/Footer";
+import axios from "axios";
 
 // import { Helmet } from "react-helmet-async";
 
@@ -33,13 +34,18 @@ const Login = () => {
       signInUser(email, password)
       .then(result=>{
           console.log(result.user)
-          toast.success('Logged in succesfully')
-          navigate(location?.state ? location.state : '/')
-          
+         
+          const user = {email}
+          console.log(user);
+          axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user,{withCredentials: true})
+            .then(res=> {
+              console.log(res.data);
+              if(res.data.success){
+                toast.success('Logged in succesfully')
+                navigate(location?.state ? location.state : '/')
+              }
+            }) 
       })
-    //   console.log(e,'e')
-    //   e.target.reset()
-
       .catch(error=>{
           console.error(error)
           toast.error(error.code)
@@ -49,10 +55,17 @@ const Login = () => {
     const handleGoogleLogIn=()=>{
         signInWithGoogle()
         .then(result=>{
-            console.log(result.user)
-            toast('Logged in succesfully')
-            navigate(location?.state ? location.state : '/')
-            
+            const email = result.user.email
+            const user = {email}
+            console.log('user',user);
+            axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user,{withCredentials: true})
+            .then(res=> {
+              console.log(res.data);
+              if(res.data.success){
+                toast.success('Logged in succesfully')
+                navigate(location?.state ? location.state : '/')
+              }
+            }) 
         })
   
         .catch(error=>{

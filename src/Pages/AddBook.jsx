@@ -33,6 +33,7 @@ const AddBook = () => {
 
     fetch(`${import.meta.env.VITE_API_URL}/books`, {
       method:'POST',
+      credentials: 'include',
       headers:{
         'content-type': 'application/json'
       },

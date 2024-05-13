@@ -41,6 +41,7 @@ const UpdateBook = () => {
 
     fetch(`${import.meta.env.VITE_API_URL}/updateBook/${id}`,{
             method: 'PUT',
+            credentials: 'include',
             headers:{
                 'content-type': 'application/json'
             },
