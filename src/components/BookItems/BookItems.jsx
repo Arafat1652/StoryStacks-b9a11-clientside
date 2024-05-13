@@ -37,7 +37,7 @@ const BookItems = () => {
                 <p className="flex items-center font-bold"><AiTwotoneTag></AiTwotoneTag> <span className="ml-2 text-orange-400">{item.category}</span></p>
                         <h3 className="flex items-center font-bold text-lg gap-1">
                         {[...Array(item.rating).keys()].map((r, index)=><FaRegStar key={index}
-                        color={(hValue || cValue) > index ? "orange" : "black"}
+                        color={(hValue || cValue) > index ? "black" : "orange"}
                         onClick={() => setCValue(index + 1)}
                         onMouseOver={() => setHValue(index + 1)}
                         onMouseLeave={() => setHValue(undefined)}
@@ -50,10 +50,10 @@ const BookItems = () => {
 
                         {/* rating */}
                     </div>
-               
+               <hr />
                 <p className=""><span className="font-bold">Author : </span>{item.author_name}</p>
                 <p className=""><span className="font-bold">Quantity : </span>{item.quantity}</p>
-                    
+               <hr />   
                 <Link to={`/details/${item._id}`} className="card-actions w-full">
                   <button className="btn bg-[#13e5c0] w-full text-white font-bold">View Details</button>
                 </Link>

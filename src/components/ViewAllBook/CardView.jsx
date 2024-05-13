@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { AiTwotoneTag } from "react-icons/ai";
 import { FaRegStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 
 const CardView = ({books}) => {
+    const [cValue, setCValue] = useState(0);
+    const [hValue, setHValue] = useState(undefined);
     return (
         <div className="grid max-w-7xl my-24 gap-8 mx-auto md:grid-cols-2 lg:grid-cols-3">
       
@@ -25,12 +28,21 @@ const CardView = ({books}) => {
               
               <div className="flex justify-around">
               <p className="flex items-center font-bold"><AiTwotoneTag></AiTwotoneTag> <span className="ml-2 text-orange-400">{item.category}</span></p>
-                      <h3 className="flex items-center font-bold text-lg gap-1"><FaRegStar ></FaRegStar>{item.rating}</h3>
+                      <h3 className="flex items-center font-bold text-lg gap-1">
+                      {[...Array(item.rating).keys()].map((r, index)=><FaRegStar key={index}
+                        color={(hValue || cValue) > index ? "black" : "orange"}
+                        onClick={() => setCValue(index + 1)}
+                        onMouseOver={() => setHValue(index + 1)}
+                        onMouseLeave={() => setHValue(undefined)}
+                        style={{ cursor: "pointer" }}
+                        ></FaRegStar>)
+                        }
+                      </h3>
                   </div>
-             
+             <hr />
               <p className=""><span className="font-bold">Author : </span>{item.author_name}</p>
               <p className=""><span className="font-bold">Quantity : </span>{item.quantity}</p>
-             
+             <hr />
               <Link to={`/update/${item._id}`} className="card-actions w-full">
                 <button className="btn bg-[#13e5c0] w-full text-white font-bold">Update</button>
               </Link>

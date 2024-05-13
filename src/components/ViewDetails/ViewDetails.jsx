@@ -15,7 +15,8 @@ const ViewDetails = () => {
   const loadedBook = useLoaderData();
   const [book , setBook] = useState(loadedBook)
   const {user} = useAuth()
-
+  const [cValue, setCValue] = useState(0);
+  const [hValue, setHValue] = useState(undefined);
 
 
   //   console.log("video book", book);
@@ -135,8 +136,14 @@ console.table(book);
                 <hr className="my-4" />
                 <div className="flex gap-4 mt-4">
                   <h3 className="flex items-center text-lg gap-1">
-                    <FaRegStar className="text-purple-400"></FaRegStar>
-                    {rating}
+                  {[...Array(rating).keys()].map((r, index)=><FaRegStar key={index}
+                        color={(hValue || cValue) > index ?   "black" : "orange"}
+                        onClick={() => setCValue(index + 1)}
+                        onMouseOver={() => setHValue(index + 1)}
+                        onMouseLeave={() => setHValue(undefined)}
+                        style={{ cursor: "pointer" }}
+                        ></FaRegStar>)
+                        }
                   </h3>
                   <h4 className=" flex items-center text-lg gap-1">
                   <span className="font-bold mr-1 "> Quantity : </span> {quantity}

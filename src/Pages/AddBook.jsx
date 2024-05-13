@@ -125,6 +125,7 @@ const AddBook = () => {
                   name="quantity"
                   placeholder="Quantity"
                   className="input input-bordered w-full "
+                  required
                 />
               </label>
             </div>
