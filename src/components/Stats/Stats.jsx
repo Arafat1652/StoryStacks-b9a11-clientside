@@ -3,7 +3,7 @@ const Stats = () => {
   return (
     <div>
       <section className="text-gray-700 body-font">
-        <div className="container px-5 py-10 mx-auto">
+        <div className="container px-5 py-24 mx-auto">
         <h3 className="text-center mb-10 text-3xl font-bold">Our service statistics</h3>
           <div className="flex flex-wrap -m-4 text-center">
             <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
@@ -47,7 +47,7 @@ const Stats = () => {
                 <p className="leading-relaxed">Users</p>
               </div>
             </div>
-            <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
+            <div className="p-4 md:w-1/4 sm:w-1/2 w-full mb-10">
               <div className="border-2 border-gray-600 px-4 py-6 rounded-lg transform transition duration-500 hover:scale-110">
                 <svg
                   fill="none"

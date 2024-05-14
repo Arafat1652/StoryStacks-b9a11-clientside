@@ -16,7 +16,7 @@ const BookCategories = () => {
     return (
         <div className="max-w-7xl mx-auto my-24">
             <h3 className="text-3xl text-center font-bold">Book Categories</h3>
-            <p className="lg:w-[650px] mx-auto  mb-10 text-center mt-3">With an array of supplies and tools at hand, this space ignites inspiration and fosters a sense of accomplishment as individuals bring their visions to life. </p>
+            <p className="lg:w-[650px] mx-auto  mb-10 text-center mt-3">Stories focused on suspense, intrigue, and solving crimes or unraveling secrets, keeping readers on the edge of their seats. </p>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 p-3 lg:p-0">
 
             

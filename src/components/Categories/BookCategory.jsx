@@ -25,7 +25,7 @@ const BookCategory = ({ cate }) => {
           alt="Dog"
         />
       </div>
-      <div className="absolute inset-0 bg-gray-700 opacity-60 rounded-md"></div>
+      <div className="absolute inset-0 bg-[#653325] opacity-60 rounded-md"></div>
       <div className="absolute inset-0 flex items-center justify-center">
         <h3 className="text-center p-3 text-3xl text-white font-bold">
           {category}

@@ -1,6 +1,8 @@
 const Hero = () => {
   return (
     <div className="">
+        <h3 className="text-center text-3xl font-bold">From Our Blog</h3>
+        <p className="lg:w-[650px] mx-auto  mb-10 text-center mt-3 "> Speculative fiction that explores futuristic or alternate realities, often involving advanced technology, space exploration, and societal implications.</p>
       <div className="relative overflow-hidden pt-16 pb-32 space-y-24">
         <div className="relative">
           <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8 ">
