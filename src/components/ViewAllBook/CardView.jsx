@@ -42,9 +42,14 @@ const CardView = ({books}) => {
              <hr />
               <p className=""><span className="font-bold">Author : </span>{item.author_name}</p>
               <p className=""><span className="font-bold">Quantity : </span>{item.quantity}</p>
-             <hr />
+             <hr className="mb-2"/>
               <Link to={`/update/${item._id}`} className="card-actions w-full">
-                <button className="btn bg-[#13e5c0] w-full text-white font-bold">Update</button>
+              <button
+                  className="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-[#000000] text-[#ccff00] shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+                  type="button"
+                >
+                  update
+                </button>
               </Link>
       
             </div>

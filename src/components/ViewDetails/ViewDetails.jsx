@@ -160,7 +160,7 @@ console.table(book);
                         document.getElementById("my_modal_3").showModal()
                       }
                       disabled={quantity === 0}
-                      className="disabled:cursor-not-allowed  btn btn-primary mt-4 px-10"
+                      className="disabled:cursor-not-allowed  btn bg-[#000000] text-[#ccff00] mt-6 px-10"
                     >
                       Borrow
                     </button>

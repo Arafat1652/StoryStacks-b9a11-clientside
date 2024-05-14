@@ -58,8 +58,9 @@ const AddBook = () => {
   };
 
   return (
-    <div>
+    <div className="">
       <div className="p-24 ">
+        
         <h3 className="text-3xl font-bold text-center mb-8">Add Book</h3>
         <form onSubmit={handleAddBook}>
           {/* form book name */}

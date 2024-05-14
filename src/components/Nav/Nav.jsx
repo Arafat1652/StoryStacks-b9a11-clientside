@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 // import { RiBuilding2Fill } from "react-icons/ri";
 import { toast } from "react-toastify";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import logo from '../../assets/books.png'
 
 
 const Nav = () => {
@@ -42,7 +43,7 @@ const handleLogOut =()=>{
 }
 
   return (
-    <div className="bg-[#273c48] text-white py-3 ">
+    <div className="bg-[#000000] text-[#ccff00] py-3">
         <div  className="navbar max-w-[98%] mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
@@ -69,7 +70,12 @@ const handleLogOut =()=>{
          {navLink}
           </ul>
         </div>
-        <a  className="md:text-2xl lg:text-2xl font-bold">StoryStacks</a>
+        <div className='flex-1'>
+        <Link to='/' className='flex gap-2 items-center'>
+          <img className='w-auto h-7' src={logo} alt='' />
+          <span className='text-xl font-ant'>StoryStacks</span>
+        </Link>
+      </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className=" menu-horizontal px-1 ">
@@ -97,13 +103,14 @@ const handleLogOut =()=>{
               <div tabIndex={0} role="button" className="">  
                   <div className="avatar">
                       <div className="w-12 mt-3 rounded-full text-black">
-                      <img src={user.photoURL} />
+                      <img src={user.photoURL} referrerPolicy='no-referrer'/>
                       </div>
                   </div>
                   </div>
               </div>
-           <button onClick={handleLogOut} className="btn bg-[#fb8053] border-none ml-4 font-bold px-4">Logout</button>
-           </> :  <><Link to='/login'><button className="btn bg-[#13e5c0] border-none">LOGIN</button></Link>
+           <button onClick={handleLogOut} className="btn border-none hover:bg-[#ccff00] ml-4 font-bold px-4">Logout</button>
+           </> :  <><Link to='/login'><button className="btn bg-[#ccff00] font-bold
+            text-black px-6 border-none">LOGIN</button></Link>
                     </>
         }
     
@@ -118,6 +125,3 @@ const handleLogOut =()=>{
 export default Nav;
 
 
-
-{/* <Link to='/login'><button className="btn btn-primary">Login</button></Link>
-<Link to='/register'><button className="btn btn-secondary">Register</button></Link> */}

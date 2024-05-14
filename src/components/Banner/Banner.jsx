@@ -5,21 +5,23 @@ import { Navigation,Autoplay,Pagination } from 'swiper/modules';
 
 const Banner = () => {
     return (
-        <div className="px-4 py-16 mx-auto bg-[#e8c1ba]  md:max-w-full  md:px-24 lg:px-8 lg:py-20">
+        <div className="px-4 py-16 mx-auto bg-[#cea5ad]  md:max-w-full  md:px-24 lg:px-8 lg:py-20">
         <div className="flex flex-col container mx-auto items-center justify-between w-full mb-10 lg:flex-row">
           <div className="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
-            <div className="max-w-xl mb-6">
+            <div className="max-w-xl mb-6 ">
               <div>
-                <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider uppercase bg-teal-accent-400 text-teal-900 rounded-full">Brand new</p>
+                <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider uppercase bg-teal-accent-400 rounded-full">Brand new</p>
               </div>
-              <h2 className="font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none max-w-lg mb-6">
+              <h2 className="font-sans text-6xl font-extrabold tracking-tight sm:leading-none max-w-lg mb-6">
                 The Easiest Way
                 <br className="hidden md:block" />
                 To Find{' '}
                 <span className="inline-block text-deep-purple-accent-400">Any Book</span>
               </h2>
-              <p className="text-gray-700 text-base md:text-lg">Engage in lively discussions in our virtual book clubs, connect with fellow readers through online forums, and join  book signings from the comfort of your own home.</p>
+              <p className="text-base md:text-lg">Engage in lively discussions in our virtual book clubs, connect with fellow readers through online forums, and join  book signings from the comfort of your own home.</p>
             </div>
+
+
             <div className="flex items-center space-x-3">
               <a href="/" className="w-32 transition duration-300 hover:shadow-lg">
                 <img src="https://kitwind.io/assets/kometa/app-store.png" className="object-cover object-top w-full h-auto mx-auto" alt="" />
