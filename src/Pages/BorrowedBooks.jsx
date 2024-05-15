@@ -23,7 +23,7 @@ const BorrowedBooks = () => {
 
 
     const handleReturn =(_id , Id)=>{
-        console.log(_id, Id);
+        // console.log(_id, Id);
         fetch(`${import.meta.env.VITE_API_URL}/return/${_id}?bookId=${Id}`, {
           method: "DELETE",
         })
