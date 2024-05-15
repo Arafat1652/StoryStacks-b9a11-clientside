@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import CardView from "../components/ViewAllBook/CardView";
 import TableView from "../components/ViewAllBook/TableView";
+import { Helmet } from "react-helmet-async";
 // import { AiTwotoneTag } from "react-icons/ai";
 // import { FaRegStar } from "react-icons/fa";
 // import { Link } from "react-router-dom";
@@ -35,6 +36,9 @@ const handleToggleView = (selectedView) => {
 
     return (
         <div className="px-2 md:px-2 lg:px-0">
+           <Helmet>
+                <title>All Books|| StoryStacks</title>
+            </Helmet>
         <div className="flex flex-col md:flex-row justify-center items-center mt-10 gap-5">
         <button onClick={handleAvailableBook} className="btn">Show available books</button>
         <div className="dropdown ">

@@ -9,6 +9,7 @@ import Nav from "../Nav/Nav";
 import Footer from "../Footer.jsx/Footer";
 import axios from "axios";
 import bg from '../../assets/bg.png'
+import { Helmet } from "react-helmet-async";
 
 // import { Helmet } from "react-helmet-async";
 
@@ -37,11 +38,13 @@ const Login = () => {
           console.log(result.user)
          
           const user = {email}
+          const roling = {user_email:email, role:'normal'}
           console.log(user);
           axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user,{withCredentials: true})
             .then(res=> {
               console.log(res.data);
               if(res.data.success){
+                axios.post(`${import.meta.env.VITE_API_URL}/users`, roling)
                 toast.success('Logged in succesfully')
                 navigate(location?.state ? location.state : '/')
               }
@@ -58,11 +61,13 @@ const Login = () => {
         .then(result=>{
             const email = result.user.email
             const user = {email}
+            const roling = {user_email:email, role:'normal'}
             // console.log('user',user);
             axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user,{withCredentials: true})
             .then(res=> {
             //   console.log(res.data);
               if(res.data.success){
+                axios.post(`${import.meta.env.VITE_API_URL}/users`, roling)
                 toast.success('Logged in succesfully')
                 navigate(location?.state ? location.state : '/')
               }
@@ -92,9 +97,9 @@ const Login = () => {
     return (
         
      <div style={{ backgroundImage: `url(${bg})`}} className="bg-cover bg-center" >
-        {/* <Helmet>
-                <title>Login || ARTISAN</title>
-            </Helmet> */}
+        <Helmet>
+                <title>Login || StoryStacks</title>
+        </Helmet>
         <Nav></Nav>
         
            <div className="w-full max-w-md my-10 p-8 space-y-3 rounded-xl mx-auto text-gray-100 h-full  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100">
@@ -136,7 +141,7 @@ const Login = () => {
                 </svg>
             </button>
         </div>
-        <p className="text-sm text-center sm:px-6 text-gray-400">Don not have an account?
+        <p className="text-sm text-center sm:px-6">Don not have an account?
             <NavLink to='/register' rel="noopener noreferrer" href="#" className="underline text-[#ccff00]"> Register</NavLink>
         </p>
     </div>

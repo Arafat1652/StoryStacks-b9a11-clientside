@@ -11,6 +11,7 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import Marquee from "react-fast-marquee";
+import { Helmet } from "react-helmet-async";
 
 const ViewDetails = () => {
   const loadedBook = useLoaderData();
@@ -67,24 +68,28 @@ const ViewDetails = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        if (data.insertedId) {
-        toast.success('Your borrowed this book succefully')
+        if (!data.isError) {
+        toast.success(data.message)
 
+        }else{
+          toast.error(data.message)
         }
-        window.location.reload()
+        setTimeout(() => {
+          window.location.reload();
+      }, 2000);
       })
-      .catch(error => {
-        toast.error(error.message);
+    //   .catch(error => {
+    //     toast.error('you have already borrow this book',error);
         
-    });
+    // });
   }
 
 //   console.log('date',startDate);
   return (
     <div>
-      {/* <Helmet>
-                 <title>{itemName} || ARTISAN</title>
-             </Helmet> */}
+      <Helmet>
+          <title>{book_name} || ARTISAN</title>
+        </Helmet>
       <Nav></Nav>
       {/* card */}
       <div className="my-10">

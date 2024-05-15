@@ -5,6 +5,7 @@ import { AiTwotoneTag } from "react-icons/ai";
 
 
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const BorrowedBooks = () => {
@@ -44,7 +45,9 @@ const BorrowedBooks = () => {
 
   return (
     <div className="px-2 md:px-2 lg:px-0">
-     <h3>borrowed books {borrowedBooks.length}</h3>
+      <Helmet>
+        <title>Borrowed Books || StoryStacks</title>
+      </Helmet>
       <div className="grid max-w-7xl my-24 gap-8 mx-auto md:grid-cols-2 lg:grid-cols-3">
         {borrowedBooks.map((item) => (
           <div

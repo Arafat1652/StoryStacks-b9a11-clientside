@@ -33,7 +33,7 @@ const Nav = () => {
     const navLink = <>
     <li className="mr-4 font-semibold"><NavLink to='/'>Home</NavLink></li>
     <li className="mr-4 font-semibold"><NavLink to='/add'>Add Book</NavLink></li>
-    <li className="mr-4 font-semibold"><NavLink to='/all'>All Book</NavLink></li>
+    <li className="mr-4 font-semibold"><NavLink to='/all'>All Books</NavLink></li>
     <li className="mr-4 font-semibold"><NavLink to='/borrowed'>Borrowed Books</NavLink></li>
 </>
 

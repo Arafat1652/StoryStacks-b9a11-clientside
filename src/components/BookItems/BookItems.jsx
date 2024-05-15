@@ -4,6 +4,7 @@ import { AiTwotoneTag } from "react-icons/ai";
 import { FaRegStar } from "react-icons/fa";
 import Footer from "../Footer.jsx/Footer";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 // import React from 'react';
 // import Rating from 'react-rating';
 
@@ -15,6 +16,9 @@ const BookItems = () => {
   const [hValue, setHValue] = useState(undefined);
   return (
     <div className="px-2 md:px-2 lg:px-0">
+      <Helmet>
+        <title>category || StoryStacks</title>
+      </Helmet>
       <Nav></Nav>
       <div className="grid max-w-7xl my-24 gap-8 mx-auto md:grid-cols-2 lg:grid-cols-3">
         {bookItems.map((item) => (

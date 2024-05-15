@@ -9,6 +9,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import Nav from "../Nav/Nav";
 import Footer from "../Footer.jsx/Footer";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 // import { Helmet } from "react-helmet-async";
 
@@ -49,11 +50,17 @@ const Register = () => {
             updateUserProfile(fullName, image)
             .then(()=>{
                 const user = {email}
+                const roling = {user_email:email, role:'normal'}
                 console.log('user',user);
+                console.log('roling',roling);
                 axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user,{withCredentials: true})
                 .then(res=> {
+                    // for librarian role
+
                   console.log(res.data);
                   if(res.data.success){
+                    axios.post(`${import.meta.env.VITE_API_URL}/users`, roling)
+
                     toast.success('Your Registration Succesfull')
                     navigate('/')
                   }
@@ -68,9 +75,9 @@ const Register = () => {
 
     return (
         <div style={{ backgroundImage: `url(https://s3.envato.com/files/208663800/02_misty-woods.jpg)`}} className="bg-cover bg-center">
-            {/* <Helmet>
-                <title>Register || ARTISAN</title>
-            </Helmet> */}
+             <Helmet>
+                <title>Register|| StoryStacks</title>
+            </Helmet>
             <Nav></Nav>
            <div className="w-full max-w-md my-10 p-8 space-y-3 rounded-xl mx-auto text-gray-100 h-full  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100">
         <h1 className="text-2xl font-bold text-center ">Register</h1>

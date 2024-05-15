@@ -3,11 +3,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../Footer.jsx/Footer";
 import Nav from "../Nav/Nav";
 import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const UpdateBook = () => {
   const { id } = useParams();
   //   console.log(id);
   const [books, setBooks] = useState({});
+  const { user } = useAuth();
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -28,6 +32,7 @@ const UpdateBook = () => {
     const rating = form.rating.value;
     const author_name = form.author.value;
     const image = form.image.value;
+    const user_email = user.email;
 
     const book = {
         book_name,
@@ -35,6 +40,7 @@ const UpdateBook = () => {
       rating,
       author_name,
       image,
+      user_email,
     };
 
     console.log(book);
@@ -60,6 +66,9 @@ const UpdateBook = () => {
                   });
                  navigate('/all') 
             }
+            if(data.message){
+              toast.error(data.message)
+            }
         })
 
 
@@ -68,6 +77,9 @@ const UpdateBook = () => {
 
   return (
     <div style={{ backgroundImage: `url(https://s3.envato.com/files/208663800/02_misty-woods.jpg)`}} className="bg-cover bg-center">
+      <Helmet>
+        <title>{books.book_name}</title>
+      </Helmet>
         <Nav></Nav>
       <div className="w-full max-w-md p-8 m-8 rounded-xl mx-auto  h-full  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 ">
         <h3 className="text-3xl font-bold text-center mb-8">Update Book</h3>

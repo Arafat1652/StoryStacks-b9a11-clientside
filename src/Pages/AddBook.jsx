@@ -1,5 +1,7 @@
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
+import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const AddBook = () => {
   const { user } = useAuth();
@@ -46,11 +48,14 @@ const AddBook = () => {
         Swal.fire({
           position: "top-center",
           icon: "success",
-          title: "Your data added succefully",
+          title: "Your book added succefully",
           showConfirmButton: false,
           timer: 1500,
         });
         form.reset();
+      }
+      if(data.message){
+        toast.error(data.message)
       }
     })
 
@@ -59,6 +64,9 @@ const AddBook = () => {
 
   return (
     <div style={{ backgroundImage: `url(https://s3.envato.com/files/208663800/02_misty-woods.jpg)`}} className="bg-cover bg-center p-8">
+      <Helmet>
+                <title>Add Books|| StoryStacks</title>
+            </Helmet>
       <div className="w-full max-w-md p-8  rounded-xl mx-auto  h-full  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100">
         
         <h3 className="text-3xl font-bold text-center mb-8">Add Book</h3>
