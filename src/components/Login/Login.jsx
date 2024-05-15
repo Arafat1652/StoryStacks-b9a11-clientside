@@ -58,10 +58,10 @@ const Login = () => {
         .then(result=>{
             const email = result.user.email
             const user = {email}
-            console.log('user',user);
+            // console.log('user',user);
             axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user,{withCredentials: true})
             .then(res=> {
-              console.log(res.data);
+            //   console.log(res.data);
               if(res.data.success){
                 toast.success('Logged in succesfully')
                 navigate(location?.state ? location.state : '/')

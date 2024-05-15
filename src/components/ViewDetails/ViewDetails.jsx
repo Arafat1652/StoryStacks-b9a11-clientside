@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import Marquee from "react-fast-marquee";
 
 const ViewDetails = () => {
   const loadedBook = useLoaderData();
@@ -38,7 +39,7 @@ const ViewDetails = () => {
 //     console.log('this is from useeffect');
 //   }, [loadedBook]);
 
-console.table(book);
+// console.table(book);
   const borrowDate = new Date() 
   const returnDate = startDate;
 
@@ -73,7 +74,7 @@ console.table(book);
         window.location.reload()
       })
       .catch(error => {
-        toast.error('You are already borrwed this books:', error);
+        toast.error(error.message);
         
     });
   }
@@ -86,24 +87,6 @@ console.table(book);
              </Helmet> */}
       <Nav></Nav>
       {/* card */}
-
-      <div className="bg-[#d7edd8] p-8 lg:p-24 w-[95%] mx-auto mt-2">
-        {/* <Marquee>
-            <div className=" flex gap-10 items-center">
-            <img src="https://newhome.qodeinteractive.com/wp-content/uploads/2023/03/client-7.png" alt="" />
-            <img src="https://mobirise.com/extensions/personam4/assets/images/1.png" alt="" />
-            <img src="https://newhome.qodeinteractive.com/wp-content/uploads/2023/03/client-2.png" alt="" />
-            <img src="https://newhome.qodeinteractive.com/wp-content/uploads/2023/03/client-3.png" alt="" />
-            
-            <img src="https://newhome.qodeinteractive.com/wp-content/uploads/2023/03/client-4.png" alt="" />
-            <img src="https://mobirise.com/extensions/personam4/assets/images/2.png" alt="" />
-            <img src="https://mobirise.com/extensions/personam4/assets/images/5.png" alt="" />
-            <img src="https://mobirise.com/extensions/personam4/assets/images/3.png" alt="" />
-           
-            <img src="https://newhome.qodeinteractive.com/wp-content/uploads/2023/03/client-6.png" alt="" />
-            </div>
-            </Marquee> */}
-      </div>
       <div className="my-10">
         <div className="bg-gray-100 py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -260,3 +243,4 @@ console.table(book);
 };
 
 export default ViewDetails;
+

@@ -58,8 +58,8 @@ const AddBook = () => {
   };
 
   return (
-    <div className="">
-      <div className="p-24 ">
+    <div style={{ backgroundImage: `url(https://s3.envato.com/files/208663800/02_misty-woods.jpg)`}} className="bg-cover bg-center p-8">
+      <div className="w-full max-w-md p-8  rounded-xl mx-auto  h-full  bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100">
         
         <h3 className="text-3xl font-bold text-center mb-8">Add Book</h3>
         <form onSubmit={handleAddBook}>
@@ -197,7 +197,7 @@ const AddBook = () => {
           {/* form */}
 
           <div className="flex mb-5 w-full">
-            <div className="form-control w-full">
+            <div className="form-control w-full ">
               <label>Book Content</label>
               <br />
               <textarea
@@ -213,7 +213,7 @@ const AddBook = () => {
           <input
             type="submit"
             value="Add"
-            className="btn btn-block text-xl bg-[#13e5c0]"
+            className="btn btn-block text-xl bg-[#000000] text-[#ccff00] border-none"
           />
         </form>
       </div>

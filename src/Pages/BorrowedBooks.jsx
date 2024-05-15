@@ -13,7 +13,7 @@ const BorrowedBooks = () => {
   const [control, setControl] = useState(false)
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/myBorrows/${user?.email}`)
+    fetch(`${import.meta.env.VITE_API_URL}/myBorrows/${user?.email}`, {credentials:'include'})
       .then((res) => res.json())
       .then((data) => {
         setBorrowedBooks(data);
@@ -44,7 +44,7 @@ const BorrowedBooks = () => {
 
   return (
     <div className="px-2 md:px-2 lg:px-0">
-     
+     <h3>borrowed books {borrowedBooks.length}</h3>
       <div className="grid max-w-7xl my-24 gap-8 mx-auto md:grid-cols-2 lg:grid-cols-3">
         {borrowedBooks.map((item) => (
           <div

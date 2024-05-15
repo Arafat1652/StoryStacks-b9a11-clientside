@@ -4,8 +4,9 @@ import 'swiper/css/bundle';
 import { Navigation,Autoplay,Pagination } from 'swiper/modules';
 
 const Banner = () => {
+  // bg-[#cea5ad] 
     return (
-        <div className="px-4 py-16 mx-auto bg-[#cea5ad]  md:max-w-full  md:px-24 lg:px-8 lg:py-20">
+        <div className="px-4 py-16 mx-auto md:max-w-full  md:px-24 lg:px-8 lg:py-20">
         <div className="flex flex-col container mx-auto items-center justify-between w-full mb-10 lg:flex-row">
           <div className="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
             <div className="max-w-xl mb-6 ">
