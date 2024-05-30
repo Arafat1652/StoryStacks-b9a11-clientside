@@ -63,9 +63,16 @@ const TableView = ({books}) => {
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium ">
                           {index + 1}
                         </td>
-                        <td className="text-sm  font-light px-6 py-4 whitespace-nowrap">
-                        {item.book_name}
-                        </td>
+                        <td className="p-3 pl-0">
+                    <div className="flex items-center">
+                      <div className="relative inline-block shrink-0 rounded-2xl me-3">
+                        <img className="h-12 w-12 object-cover" src={item.image} alt=""/>
+                      </div>
+                      <div className="flex flex-col justify-start">
+                        <Link to={`/details/${item._id}`} className="mb-1 font-semibold transition-colors duration-200 ease-in-out text-lg/normal text-secondary-inverse hover:text-primary"> {item.book_name} </Link>
+                      </div>
+                    </div>
+                  </td>
                         <td className="text-sm  font-light px-6 py-4 whitespace-nowrap">
                         {item.author_name}
                         </td>

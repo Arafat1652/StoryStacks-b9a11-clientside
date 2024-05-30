@@ -57,6 +57,12 @@ const AuthProvider = ({children}) => {
             setUser(currentUser)
             console.log('onchanged auth provider in side use effect',currentUser)
             setLoading(false)
+            if(!currentUser){
+                axios(`${import.meta.env.VITE_API_URL}/logout` , {withCredentials: true})
+                .then(()=>{
+                    setUser(null)
+                })
+            }
         });
         return ()=>{
             unSubscribe()
@@ -66,7 +72,7 @@ const AuthProvider = ({children}) => {
     const authInfo = {user, createUser, signInUser, logOut, loading ,signInWithGoogle,signInWithGitHub, updateUserProfile, setUser}
     return (
         <AuthContext.Provider value={authInfo}>
-            {children}
+            {children} 
         </AuthContext.Provider>
     );
 };

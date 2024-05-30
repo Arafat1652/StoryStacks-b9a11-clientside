@@ -37,8 +37,8 @@ const Nav = () => {
     <li className="mr-4 font-semibold"><NavLink to='/borrowed'>Borrowed Books</NavLink></li>
 </>
 
-const handleLogOut =()=>{
-  logOut()
+const handleLogOut =async()=>{
+  await logOut()
   toast('log Out')
 }
 
